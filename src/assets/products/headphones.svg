@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.15" />
+    </linearGradient>
+    <linearGradient id="band" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155" />
+      <stop offset="100%" style="stop-color:#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)" rx="16"/>
+  <!-- Headband -->
+  <path d="M120 160 Q120 80 200 70 Q280 80 280 160" stroke="#475569" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- Headband padding -->
+  <path d="M170 78 Q200 68 230 78" stroke="#64748b" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <!-- Left ear cup -->
+  <rect x="100" y="145" width="40" height="60" rx="12" fill="url(#band)"/>
+  <rect x="105" y="150" width="30" height="50" rx="10" fill="#1e293b"/>
+  <ellipse cx="120" cy="175" rx="10" ry="18" fill="#334155"/>
+  <!-- Right ear cup -->
+  <rect x="260" y="145" width="40" height="60" rx="12" fill="url(#band)"/>
+  <rect x="265" y="150" width="30" height="50" rx="10" fill="#1e293b"/>
+  <ellipse cx="280" cy="175" rx="10" ry="18" fill="#334155"/>
+  <!-- Cushion details -->
+  <ellipse cx="120" cy="175" rx="8" ry="15" fill="#475569" opacity="0.3"/>
+  <ellipse cx="280" cy="175" rx="8" ry="15" fill="#475569" opacity="0.3"/>
+  <!-- LED accents -->
+  <ellipse cx="120" cy="200" rx="12" ry="2" fill="#a855f7" opacity="0.4"/>
+  <ellipse cx="280" cy="200" rx="12" ry="2" fill="#a855f7" opacity="0.4"/>
+</svg>
