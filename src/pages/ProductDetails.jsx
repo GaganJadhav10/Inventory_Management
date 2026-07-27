@@ -10,7 +10,7 @@ import { LoadingState } from '../components/Loader.jsx'
 import EmptyState from '../components/EmptyState.jsx'
 import { useWallet } from '../context/WalletContext.jsx'
 import { fetchProductById, transferProductOwnership, updateProductPrice, updateProductQuantity } from '../services/contractService.js'
-import { formatPrice, formatQuantity, formatTimestamp, shortenAddress } from '../utils/formatters.js'
+import { formatQuantity, formatTimestamp, formatCurrency, calculateTotalPrice, shortenAddress } from '../utils/formatters.js'
 import { SEPOLIA_EXPLORER_BASE } from '../utils/constants.js'
 
 export default function ProductDetails() {
@@ -126,6 +126,12 @@ export default function ProductDetails() {
           {/* Details Grid */}
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <DetailRow
+              icon={DollarSign}
+              label="Unit Price"
+              value={formatCurrency(product.price)}
+              accent="from-accent-emerald to-accent-cyan"
+            />
+            <DetailRow
               icon={BarChart3}
               label="Quantity"
               value={formatQuantity(product.quantity)}
@@ -133,8 +139,8 @@ export default function ProductDetails() {
             />
             <DetailRow
               icon={DollarSign}
-              label="Price"
-              value={formatPrice(product.price)}
+              label="Total Price"
+              value={formatCurrency(calculateTotalPrice(product.price, product.quantity))}
               accent="from-accent-emerald to-accent-cyan"
             />
             <DetailRow
@@ -192,7 +198,7 @@ export default function ProductDetails() {
         isOpen={modalType === 'quantity'}
         onClose={() => setModalType(null)}
         title="Update Quantity"
-        description={`Currently ${product.quantity.toString()}`}
+        description={`Unit Price: ${formatCurrency(product.price)} · Currently ${product.quantity.toString()}`}
         fields={[{ name: 'newQuantity', label: 'New Quantity', type: 'number', placeholder: 'e.g. 50' }]}
         onSubmit={submitModal}
         submitLabel="Update Quantity"
@@ -201,8 +207,8 @@ export default function ProductDetails() {
         isOpen={modalType === 'price'}
         onClose={() => setModalType(null)}
         title="Update Price"
-        description={`Currently ${product.price.toString()}`}
-        fields={[{ name: 'newPrice', label: 'New Price', type: 'number', placeholder: 'e.g. 30' }]}
+        description={`Currently ${formatCurrency(product.price)} · Qty ${product.quantity}`}
+        fields={[{ name: 'newPrice', label: 'New Unit Price', type: 'number', placeholder: 'e.g. 30' }]}
         onSubmit={submitModal}
         submitLabel="Update Price"
       />

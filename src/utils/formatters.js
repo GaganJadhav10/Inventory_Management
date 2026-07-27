@@ -27,6 +27,26 @@ export function formatPrice(price) {
   }
 }
 
+/** Formats a value as Indian Rupee currency (₹) with Indian numbering system. */
+export function formatCurrency(value) {
+  if (value === undefined || value === null) return '—'
+  try {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    }).format(value)
+  } catch {
+    return `₹${value}`
+  }
+}
+
+/** Computes total price = unitPrice × quantity. Returns 0 if quantity is zero or negative. */
+export function calculateTotalPrice(unitPrice, quantity) {
+  if (!unitPrice || !quantity || quantity <= 0) return 0
+  return unitPrice * quantity
+}
+
 /** Formats a quantity value. */
 export function formatQuantity(qty) {
   if (qty === undefined || qty === null) return '—'

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { ExternalLink, Eye, Package, PencilLine, Tag, Calendar, User } from 'lucide-react'
 import GlassCard from './GlassCard.jsx'
 import CopyButton from './CopyButton.jsx'
-import { formatPrice, formatQuantity, formatTimestamp, shortenAddress } from '../utils/formatters.js'
+import { formatQuantity, formatTimestamp, formatCurrency, calculateTotalPrice, shortenAddress } from '../utils/formatters.js'
 import { SEPOLIA_EXPLORER_BASE } from '../utils/constants.js'
 import { getProductImage } from '../utils/productImages.js'
 
@@ -39,14 +39,18 @@ export default function ProductCard({ product, delay = 0, onEditQuantity, onEdit
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 gap-3 text-sm">
+      <div className="grid grid-cols-3 gap-3 text-sm">
+        <div className="rounded-xl bg-slate-900/5 dark:bg-white/5 p-3">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Unit Price</p>
+          <p className="mt-1 font-display text-lg font-bold text-slate-800 dark:text-white">{formatCurrency(price)}</p>
+        </div>
         <div className="rounded-xl bg-slate-900/5 dark:bg-white/5 p-3">
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Quantity</p>
           <p className="mt-1 font-display text-lg font-bold text-slate-800 dark:text-white">{formatQuantity(quantity)}</p>
         </div>
         <div className="rounded-xl bg-slate-900/5 dark:bg-white/5 p-3">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Price</p>
-          <p className="mt-1 font-display text-lg font-bold text-slate-800 dark:text-white">{formatPrice(price)}</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Total Price</p>
+          <p className="mt-1 font-display text-lg font-bold text-slate-800 dark:text-white">{formatCurrency(calculateTotalPrice(price, quantity))}</p>
         </div>
       </div>
 
