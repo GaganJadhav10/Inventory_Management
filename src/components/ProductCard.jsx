@@ -38,19 +38,19 @@ export default function ProductCard({ product, delay = 0, onEditQuantity, onEdit
         </span>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-3">
-        <div className="min-w-0 flex-1 overflow-hidden rounded-xl bg-slate-900/5 p-4 dark:bg-white/5">
+      {/* Stats — Stacked */}
+      <div className="flex flex-col gap-2">
+        <div className="min-w-0 overflow-hidden rounded-xl bg-slate-900/5 px-4 py-3 dark:bg-white/5">
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Unit Price</p>
-          <p className="mt-1 min-w-0 break-words font-display text-[clamp(14px,2.5vw,20px)] font-bold leading-tight text-slate-800 dark:text-white">{formatCurrency(price)}</p>
+          <p className="mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis font-display text-xl font-bold text-slate-800 dark:text-white">{formatCurrency(price)}</p>
         </div>
-        <div className="min-w-0 flex-1 overflow-hidden rounded-xl bg-slate-900/5 p-4 dark:bg-white/5">
+        <div className="min-w-0 overflow-hidden rounded-xl bg-slate-900/5 px-4 py-3 dark:bg-white/5">
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Quantity</p>
-          <p className="mt-1 min-w-0 break-words font-display text-[clamp(14px,2.5vw,20px)] font-bold leading-tight text-slate-800 dark:text-white">{formatQuantity(quantity)}</p>
+          <p className="mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis font-display text-xl font-bold text-slate-800 dark:text-white">{formatQuantity(quantity)}</p>
         </div>
-        <div className="min-w-0 flex-1 overflow-hidden rounded-xl border border-accent-emerald/20 bg-accent-emerald/10 p-4 dark:bg-accent-emerald/10">
+        <div className="min-w-0 overflow-hidden rounded-xl border border-accent-emerald/20 bg-accent-emerald/10 px-4 py-3 dark:bg-accent-emerald/10">
           <p className="text-[10px] font-bold uppercase tracking-wider text-accent-emerald">Total Price</p>
-          <p className="mt-1 min-w-0 break-words font-display text-[clamp(14px,2.5vw,20px)] font-bold leading-tight text-slate-800 dark:text-white">{formatCurrency(calculateTotalPrice(price, quantity))}</p>
+          <p className="mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis font-display text-xl font-bold text-slate-800 dark:text-white">{formatCurrency(calculateTotalPrice(price, quantity))}</p>
         </div>
       </div>
 
