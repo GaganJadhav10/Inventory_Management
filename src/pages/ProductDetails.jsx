@@ -142,6 +142,7 @@ export default function ProductDetails() {
               label="Total Price"
               value={formatCurrency(calculateTotalPrice(product.price, product.quantity))}
               accent="from-accent-emerald to-accent-cyan"
+              highlight
             />
             <DetailRow
               icon={User}
@@ -198,19 +199,19 @@ export default function ProductDetails() {
         isOpen={modalType === 'quantity'}
         onClose={() => setModalType(null)}
         title="Update Quantity"
-        description={`Unit Price: ${formatCurrency(product.price)} · Currently ${product.quantity.toString()}`}
-        fields={[{ name: 'newQuantity', label: 'New Quantity', type: 'number', placeholder: 'e.g. 50' }]}
+        description={`Unit Price: ${formatCurrency(product.price)} · Current Total: ${formatCurrency(calculateTotalPrice(product.price, product.quantity))}`}
+        fields={[{ name: 'newQuantity', label: 'New Quantity', type: 'number', placeholder: 'e.g. 50', min: 0 }]}
         onSubmit={submitModal}
         submitLabel="Update Quantity"
       />
       <EditModal
         isOpen={modalType === 'price'}
         onClose={() => setModalType(null)}
-        title="Update Price"
-        description={`Currently ${formatCurrency(product.price)} · Qty ${product.quantity}`}
-        fields={[{ name: 'newPrice', label: 'New Unit Price', type: 'number', placeholder: 'e.g. 30' }]}
+        title="Update Unit Price"
+        description={`Current Unit Price: ${formatCurrency(product.price)} · Qty: ${product.quantity}`}
+        fields={[{ name: 'newPrice', label: 'New Unit Price (per item)', type: 'number', placeholder: 'e.g. 2500', min: 0 }]}
         onSubmit={submitModal}
-        submitLabel="Update Price"
+        submitLabel="Update Unit Price"
       />
       <EditModal
         isOpen={modalType === 'owner'}
@@ -225,14 +226,14 @@ export default function ProductDetails() {
   )
 }
 
-function DetailRow({ icon: Icon, label, value, mono = false, copyValue, extra, accent = 'from-brand-500 to-accent-cyan', className = '' }) {
+function DetailRow({ icon: Icon, label, value, mono = false, copyValue, extra, accent = 'from-brand-500 to-accent-cyan', className = '', highlight = false }) {
   return (
-    <div className={`rounded-xl bg-slate-900/5 dark:bg-white/5 p-4 ${className}`}>
+    <div className={`rounded-xl ${highlight ? 'bg-accent-emerald/10 border border-accent-emerald/20' : 'bg-slate-900/5 dark:bg-white/5'} p-4 ${className}`}>
       <div className="flex items-center gap-2 mb-2">
         <div className={`flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br ${accent}`}>
           <Icon className="h-3.5 w-3.5 text-white" />
         </div>
-        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+        <p className={`text-[10px] font-bold uppercase tracking-wider ${highlight ? 'text-accent-emerald' : 'text-slate-400 dark:text-slate-500'}`}>
           {label}
         </p>
       </div>

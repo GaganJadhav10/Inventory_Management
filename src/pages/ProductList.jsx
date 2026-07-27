@@ -10,7 +10,7 @@ import EditModal from '../components/EditModal.jsx'
 import { useProducts } from '../hooks/useProducts.js'
 import { useWallet } from '../context/WalletContext.jsx'
 import { updateProductPrice, updateProductQuantity } from '../services/contractService.js'
-import { formatCurrency } from '../utils/formatters.js'
+import { formatCurrency, calculateTotalPrice } from '../utils/formatters.js'
 
 export default function ProductList() {
   const { products, isLoading, refresh } = useProducts()
@@ -150,8 +150,8 @@ export default function ProductList() {
         isOpen={modal?.type === 'quantity'}
         onClose={() => setModal(null)}
         title="Update Quantity"
-        description={modal?.product ? `${modal.product.name} · Unit Price: ${formatCurrency(modal.product.price)} · Currently ${modal.product.quantity.toString()}` : ''}
-        fields={[{ name: 'newQuantity', label: 'New Quantity', type: 'number', placeholder: 'e.g. 50' }]}
+        description={modal?.product ? `${modal.product.name} · Unit Price: ${formatCurrency(modal.product.price)} · Current Total: ${formatCurrency(calculateTotalPrice(modal.product.price, modal.product.quantity))}` : ''}
+        fields={[{ name: 'newQuantity', label: 'New Quantity', type: 'number', placeholder: 'e.g. 50', min: 0 }]}
         onSubmit={submitModal}
         submitLabel="Update Quantity"
       />
@@ -159,11 +159,11 @@ export default function ProductList() {
       <EditModal
         isOpen={modal?.type === 'price'}
         onClose={() => setModal(null)}
-        title="Update Price"
-        description={modal?.product ? `${modal.product.name} · Currently ${formatCurrency(modal.product.price)} · Qty ${modal.product.quantity}` : ''}
-        fields={[{ name: 'newPrice', label: 'New Unit Price', type: 'number', placeholder: 'e.g. 30' }]}
+        title="Update Unit Price"
+        description={modal?.product ? `${modal.product.name} · Current Unit Price: ${formatCurrency(modal.product.price)} · Qty: ${modal.product.quantity}` : ''}
+        fields={[{ name: 'newPrice', label: 'New Unit Price (per item)', type: 'number', placeholder: 'e.g. 2500', min: 0 }]}
         onSubmit={submitModal}
-        submitLabel="Update Price"
+        submitLabel="Update Unit Price"
       />
     </div>
   )

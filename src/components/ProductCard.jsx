@@ -48,8 +48,8 @@ export default function ProductCard({ product, delay = 0, onEditQuantity, onEdit
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Quantity</p>
           <p className="mt-1 font-display text-lg font-bold text-slate-800 dark:text-white">{formatQuantity(quantity)}</p>
         </div>
-        <div className="rounded-xl bg-slate-900/5 dark:bg-white/5 p-3">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Total Price</p>
+        <div className="rounded-xl bg-accent-emerald/10 dark:bg-accent-emerald/10 p-3 border border-accent-emerald/20">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-accent-emerald">Total Price</p>
           <p className="mt-1 font-display text-lg font-bold text-slate-800 dark:text-white">{formatCurrency(calculateTotalPrice(price, quantity))}</p>
         </div>
       </div>

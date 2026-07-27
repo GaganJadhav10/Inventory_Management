@@ -41,10 +41,16 @@ export function formatCurrency(value) {
   }
 }
 
-/** Computes total price = unitPrice × quantity. Returns 0 if quantity is zero or negative. */
+/**
+ * Computes total price = unitPrice × quantity.
+ * Returns 0 if unitPrice or quantity is zero/negative.
+ * Always uses the original unit price for calculation (never currentPrice × quantity).
+ */
 export function calculateTotalPrice(unitPrice, quantity) {
-  if (!unitPrice || !quantity || quantity <= 0) return 0
-  return unitPrice * quantity
+  const price = Number(unitPrice)
+  const qty = Number(quantity)
+  if (!Number.isFinite(price) || !Number.isFinite(qty) || price <= 0 || qty <= 0) return 0
+  return price * qty
 }
 
 /** Formats a quantity value. */

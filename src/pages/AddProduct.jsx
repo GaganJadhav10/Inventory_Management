@@ -17,7 +17,7 @@ const formFields = [
   { name: 'name', label: 'Product Name', icon: Tag, placeholder: 'e.g. Wireless Mouse', type: 'text' },
   { name: 'category', label: 'Category', icon: Hash, placeholder: 'e.g. Electronics', type: 'text' },
   { name: 'quantity', label: 'Quantity', icon: BarChart3, placeholder: 'e.g. 100', type: 'number', min: 0 },
-  { name: 'price', label: 'Price', icon: DollarSign, placeholder: 'e.g. 25', type: 'number', min: 0 },
+  { name: 'price', label: 'Unit Price (per item)', icon: DollarSign, placeholder: 'e.g. 2500', type: 'number', min: 0 },
 ]
 
 const steps = [
