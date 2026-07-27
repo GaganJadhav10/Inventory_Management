@@ -1,24 +1,46 @@
-import laptopImg from '../assets/products/laptop.svg'
-import phoneImg from '../assets/products/phone.svg'
-import watchImg from '../assets/products/watch.svg'
-import shoesImg from '../assets/products/shoes.svg'
-import televisionImg from '../assets/products/television.svg'
-import keyboardImg from '../assets/products/keyboard.svg'
-import mouseImg from '../assets/products/mouse.svg'
-import cameraImg from '../assets/products/camera.svg'
-import headphonesImg from '../assets/products/headphones.svg'
-import defaultImg from '../assets/products/default.svg'
-
+import laptopImg from '../assets/product-images/laptop.png'
+import mobileImg from '../assets/product-images/mobile.png'
+import smartwatchImg from '../assets/product-images/smartwatch.png'
+import tvImg from '../assets/product-images/tv.png'
+import defaultImg from '../assets/product-images/default.png'
+import shoesImg from "../assets/product-images/Shoes.png";
 const keywordMap = [
-  { keywords: ['laptop', 'notebook'], image: laptopImg },
-  { keywords: ['phone', 'iphone', 'samsung galaxy', 'smartphone', 'mobile'], image: phoneImg },
-  { keywords: ['watch', 'smartwatch', 'smart watch'], image: watchImg },
-  { keywords: ['shoe', 'shoes', 'sneaker', 'sneakers', 'boot', 'boots'], image: shoesImg },
-  { keywords: ['television', 'tv', 'monitor', 'display'], image: televisionImg },
-  { keywords: ['keyboard', 'mechanical keyboard'], image: keyboardImg },
-  { keywords: ['mouse', 'trackpad'], image: mouseImg },
-  { keywords: ['camera', 'dslr', 'mirrorless', 'webcam'], image: cameraImg },
-  { keywords: ['headphone', 'headphones', 'earphone', 'earphones', 'earbuds', 'headset'], image: headphonesImg },
+  { keywords: ['laptop', 'notebook', 'macbook', 'lenovo', 'thinkbook', 'thinkpad', 'dell', 'inspiron', 'xps', 'hp', 'pavilion', 'victus', 'acer', 'asus', 'rog', 'tuf', 'msi'], image: laptopImg },
+  { keywords: ['mobile', 'phone', 'smartphone', 'iphone', 'samsung', 'galaxy', 'oneplus', 'xiaomi', 'redmi', 'realme', 'oppo', 'vivo', 'pixel', 'nothing'], image: mobileImg },
+  { keywords: ['watch', 'smartwatch', 'apple watch', 'galaxy watch', 'smartwatch ultra'], image: smartwatchImg },
+  { keywords: ['tv', 'television', 'smart tv', 'sony', 'bravia', 'lg', 'oled', 'qled', 'mi tv', 'android tv'], image: tvImg },
+  {
+    keywords: [
+      'shoe',
+      'shoes',
+      'sneaker',
+      'sneakers',
+      'boot',
+      'boots',
+      'nike',
+      'adidas',
+      'puma',
+      'reebok',
+      'woodland',
+      'bata',
+      'crocs',
+      'converse',
+      'vans',
+      'new balance',
+      'asics',
+      'fila',
+      'loafer',
+      'loafers',
+      'running shoes',
+      'sports shoes',
+      'formal shoes',
+      'casual shoes',
+      'sandals',
+      'slippers',
+      'flip flops'
+    ],
+    image: shoesImg
+  },
 ]
 
 export function getProductImage(productName) {

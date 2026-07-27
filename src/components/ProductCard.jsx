@@ -8,18 +8,16 @@ import { getProductImage } from '../utils/productImages.js'
 
 export default function ProductCard({ product, delay = 0, onEditQuantity, onEditPrice }) {
   const { id, name, category, quantity, price, owner, address, createdAt } = product
-  const productImage = getProductImage(name)
 
   return (
     <GlassCard delay={delay} hover className="flex flex-col gap-0 overflow-hidden p-0">
       {/* Product Image */}
-      <div className="relative h-[200px] w-full overflow-hidden">
-        <img
-          src={productImage}
-          alt={name}
-          className="h-full w-full object-cover transition-transform duration-300 hover:scale-110"
-        />
-      </div>
+      <img
+        src={getProductImage(product.name)}
+        alt={product.name}
+        loading="lazy"
+        className="w-full h-56 object-cover rounded-t-xl transition-transform duration-300 hover:scale-105"
+      />
 
       <div className="flex flex-col gap-4 p-5">
       {/* Header */}
